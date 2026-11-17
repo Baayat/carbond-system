@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>All Specifications</h1>
+    <a href="{% url 'add_specification_page' %}" class="btn btn-primary mb-3">Add New Specification</a>
+    <ul class="list-group">
+        {% for specification in specifications %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ specification.car_specification }}: {{ specification.value }}
+                <a href="{% url 'edit_specification_page' specification.id %}" class="btn btn-sm btn-warning">Edit</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No specifications found.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>All Models</h1>
+    <a href="{% url 'add_model_page' %}" class="btn btn-primary mb-3">Add New Model</a>
+    <ul class="list-group">
+        {% for model in models %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ model.brand.brand_name }} {{ model.model_name }} ({{ model.year }})
+                <a href="{% url 'edit_model_page' model.id %}" class="btn btn-sm btn-warning">Edit</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No models found.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

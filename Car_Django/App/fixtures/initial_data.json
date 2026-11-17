@@ -1,0 +1,10 @@
+[
+  {"model": "App.specification", "pk": 1, "fields": {"car_specification": "doors", "value": "4"}},
+  {"model": "App.car", "pk": 1, "fields": {"name": "corolla", "brand": "toyota", "car_type": "I", "model": "corolla2", "year": 2020, "color": "grey", "status": "A", "mileage": 200, "capacity": 4, "price": "40000000.00", "engine_type": "petrol", "battery_tank": null, "specification": 1}},
+  {"model": "App.car", "pk": 2, "fields": {"name": "tesla_model3", "brand": "tesla", "car_type": "E", "model": "model3", "year": 2024, "color": "red", "status": "A", "mileage": 5000, "capacity": 4, "price": "90000000.00", "engine_type": "electric", "battery_tank": "75.00", "specification": 1}},
+  {"model": "App.car", "pk": 3, "fields": {"name": "corolla", "brand": "toyota", "car_type": "I", "model": "corolla2", "year": 2020, "color": "grey", "status": "S", "mileage": 200, "capacity": 4, "price": "30000000.00", "engine_type": "petrol", "battery_tank": "6.00", "specification": 1}},
+  {"model": "App.customer", "pk": 1, "fields": {"first_name": "saphina", "last_name": "bayaat", "contact": "076543218", "address": "kampala", "gender": "F"}},
+  {"model": "App.employee", "pk": 1, "fields": {"first_name": "mariam", "last_name": "isa", "contact": "078965432", "role": "manager", "gender": "F", "birth_year": 1990, "hire_date": "2024-10-10"}},
+  {"model": "App.sale", "pk": 1, "fields": {"sale_price": "90000000.00", "total_paid": "5000000.00", "car": 1, "employee": 1, "customer": 1}},
+  {"model": "App.payment", "pk": 1, "fields": {"payment_date": "2024-10-01", "amount": "4000000.00", "payment_method": "credit_card", "sale": 1}}
+]

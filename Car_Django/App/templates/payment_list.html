@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>All Payments</h1>
+    <a href="{% url 'add_payment_page' %}" class="btn btn-primary mb-3">Add New Payment</a>
+    <ul class="list-group">
+        {% for payment in payments %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Payment {{ payment.id }}: UGX {{ payment.amount|floatformat:0 }} on {{ payment.payment_date }} via {{ payment.get_payment_method_display }} (Sale {{ payment.sale.id }}, balance UGX {{ payment.balance|floatformat:0 }})
+                <a href="{% url 'edit_payment_page' payment.id %}" class="btn btn-sm btn-warning">Edit</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No payments found.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

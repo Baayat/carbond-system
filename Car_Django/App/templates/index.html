@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron mt-3">
+        <h1 class="display-4">Mariam's Car Bond</h1>
+        <p class="lead">Sell cars. Track payments. Stay organised. Everything for Mariam's Car Bond showroom in one simple system.</p>
+        <hr class="my-4">
+
+        <h5 class="mb-3">Quick Navigation</h5>
+        <div class="d-flex flex-wrap gap-2">
+            <a href="{% url 'brand_list_page' %}" class="btn btn-outline-secondary m-1">Brand List</a>
+            <a href="{% url 'model_list_page' %}" class="btn btn-outline-secondary m-1">Model List</a>
+            <a href="{% url 'car_list_page' %}" class="btn btn-outline-secondary m-1">Car List</a>
+            <a href="{% url 'specification_list_page' %}" class="btn btn-outline-secondary m-1">Specification List</a>
+            <a href="{% url 'customer_list_page' %}" class="btn btn-outline-secondary m-1">Customer List</a>
+            <a href="{% url 'employee_list_page' %}" class="btn btn-outline-secondary m-1">Employee List</a>
+            <a href="{% url 'sale_list_page' %}" class="btn btn-outline-secondary m-1">Sale List</a>
+            <a href="{% url 'payment_list_page' %}" class="btn btn-outline-secondary m-1">Payment List</a>
+            <a href="{% url 'check_service_page' %}" class="btn btn-outline-info m-1">Check Car Service</a>
+        </div>
+    </div>
+
+    <h2>Description</h2>
+    <p>A web-based Car Bond Management System designed to manage the car inventory, specifications, customers, employees, car sales and sale payments efficiently.</p>
+
+    <h2 class="mt-4">System Modules</h2>
+    <ul>
+        <li><strong>Brand Module</strong> — Manage vehicle brands used in the showroom inventory</li>
+        <li><strong>Model Module</strong> — Manage model names, years, and their associated brand</li>
+        <li><strong>Car Module</strong> — Manage cars, their status, mileage, price and engine type (Car, Electric and ICE car)</li>
+        <li><strong>Specification Module</strong> — Record car specifications such as doors and their values</li>
+        <li><strong>Customer Module</strong> — Register customers and their contact details</li>
+        <li><strong>Employee Module</strong> — Register employees, roles and hire dates</li>
+        <li><strong>Sale Module</strong> — Record sales linking a car, an employee and a customer</li>
+        <li><strong>Payment Module</strong> — Record payments made against a sale and calculate the balance</li>
+    </ul>
+
+    <h2 class="mt-4">Management Workflow</h2>
+    <ol>
+        <li>Register the car and its specification</li>
+        <li>Register the customer and the employee handling the sale</li>
+        <li>Create a sale linking the car, employee and customer</li>
+        <li>Record payments against the sale and calculate the balance</li>
+        <li>Check when a car is due for service based on its mileage</li>
+    </ol>
+
+    <h2 class="mt-4">Database Reference Overview</h2>
+    <div class="table-responsive">
+    <table class="table table-striped mt-3 mb-5">
+        <thead>
+            <tr>
+                <th scope="col">Module Name</th>
+                <th scope="col">Key Attributes</th>
+                <th scope="col">Action Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Brands</td>
+                <td>brand_name</td>
+                <td><a href="{% url 'brand_list_page' %}">View Brands</a></td>
+            </tr>
+            <tr>
+                <td>Models</td>
+                <td>brand, year, model_name</td>
+                <td><a href="{% url 'model_list_page' %}">View Models</a></td>
+            </tr>
+            <tr>
+                <td>Cars</td>
+                <td>model, color, status, mileage, capacity, price, car_type, engine_type</td>
+                <td><a href="{% url 'car_list_page' %}">View Cars</a></td>
+            </tr>
+            <tr>
+                <td>Specifications</td>
+                <td>car_specification, value, car</td>
+                <td><a href="{% url 'specification_list_page' %}">View Specifications</a></td>
+            </tr>
+            <tr>
+                <td>Customers</td>
+                <td>first_name, last_name, contact, address, gender</td>
+                <td><a href="{% url 'customer_list_page' %}">View Customers</a></td>
+            </tr>
+            <tr>
+                <td>Employees</td>
+                <td>first_name, last_name, contact, role, gender, birth_year (age), hire_date</td>
+                <td><a href="{% url 'employee_list_page' %}">View Employees</a></td>
+            </tr>
+            <tr>
+                <td>Sales</td>
+                <td>sale_price, total_paid, car, employee, customer</td>
+                <td><a href="{% url 'sale_list_page' %}">View Sales</a></td>
+            </tr>
+            <tr>
+                <td>Payments</td>
+                <td>payment_date, amount, payment_method, sale (balance)</td>
+                <td><a href="{% url 'payment_list_page' %}">View Payments</a></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+{% endblock content %}

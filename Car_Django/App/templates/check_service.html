@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Check Car Service</h1>
+    <p>Service is due when the mileage since the last service reaches the car's interval
+       (Car: 10,000 km, Electric: 20,000 km, ICE car: 5,000 km).</p>
+
+    {% if result %}
+        {% if result.due %}
+            <div class="alert alert-danger mt-2">
+                {{ result.car.name }} is <strong>due for service</strong>:
+                {{ result.since_service }} km since the last service (interval {{ result.interval }} km).
+            </div>
+        {% else %}
+            <div class="alert alert-success mt-2">
+                {{ result.car.name }} is <strong>not yet due</strong> for service:
+                {{ result.since_service }} km since the last service (interval {{ result.interval }} km).
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <form method="POST" class="mt-3 mb-5">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Check Service" class="btn btn-primary">
+        <a href="{% url 'add_car_page' %}" class="btn btn-secondary">Back to Cars</a>
+    </form>
+{% endblock content %}

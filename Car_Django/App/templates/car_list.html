@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>All Cars</h1>
+    <a href="{% url 'add_car_page' %}" class="btn btn-primary mb-3">Add New Car</a>
+    <ul class="list-group">
+        {% for car in cars %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ car.model }} - {{ car.color }} ({{ car.get_car_type_display }}, {{ car.get_status_display }} - UGX {{ car.price|floatformat:0 }})
+                <a href="{% url 'edit_car_page' car.id %}" class="btn btn-sm btn-warning">Edit</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No cars found.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
