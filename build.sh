@@ -2,8 +2,6 @@
 # exit on error
 set -o errexit
 
-cd Car_Django
-
 pip install -r requirements.txt
 
 python manage.py collectstatic --no-input

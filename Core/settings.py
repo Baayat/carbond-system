@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^@7^x92y&9+%g^0xh5fsi3(8yjdxp9$le&yj&h=!+lqh1t^a+*'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-^@7^x92y&9+%g^0xh5fsi3(8yjdxp9$le&yj&h=!+lqh1t^a+*')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() in {"true", "1", "yes", "on"}
@@ -137,5 +137,8 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = 'index_page'
 LOGOUT_REDIRECT_URL = 'login'
+
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
